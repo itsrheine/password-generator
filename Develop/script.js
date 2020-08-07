@@ -21,7 +21,8 @@ var showPassCriteria = function() {
 
   // prompted for length
   if (passLength >= 8 && passLength <= 128) {
-    passCharTypes();
+    window.alert("You may choose between four character types.  You must choose atleast one in order to proceed.")
+    passUpperOption();
 
   return passLength;
   }
@@ -30,63 +31,129 @@ var showPassCriteria = function() {
     // force guest to choose valid option
     showPassCriteria();
   }
+
+  var passExit = window.confirm("Exit");
+  
+  if (passExit) {
+    showPassCriteria();
+  }
+  else {
+    window.alert("Exit");
+  }
+  
 };
 
-// prompted for character types
-var passCharTypes = function () {
-  var passCharTypesOptions = window.prompt(
-    "Choose atleast one character type for your random password.  Type LOWERCASE, UPPERCASE, NUMERIC and/or SPECIAL CHARACTERS.");
+// prompted for lower case
+var passUpperOption = function () {
+  var passprompt = window.prompt("Would you like your password to include UPPERCASE leters?");
+      passprompt = passprompt.toLowerCase();
+
+      // if they mistyped 
+      if (passprompt === "" || passprompt === null) {
+        window.alert("Invalid Input.")
+        passUpperOption();
+      }
+
+      // if it was YES
+      else if (passprompt === "yes") {
+        passprompt = true;
+        return passprompt;
+      }
+
+      else if (passprompt === "no") {
+        passprompt = false;
+        return passprompt
+      }
+
+      return passprompt;
+      
+}
+
+
+ // prompted for upper case
+ var passLowerOption = function () {
+  var passprompt = window.prompt("Would you like your password to include LOWERCASE leters?");
+      passprompt = passprompt.toLowerCase();
+
+      // if they mistyped 
+      if (passprompt === "" || passprompt === null) {
+        window.alert("Invalid Input.")
+        passLowerOption();
+      }
+
+      // if it was YES
+      else if (passprompt === "yes") {
+        passprompt = true;
+        return passprompt;
+      }
+
+      else if (passprompt === "no") {
+        passprompt = false;
+        return passprompt
+      }
+
+      return passprompt;
+}
+
+
+ // prompted for numeric
+ var passNumOption = function () {
+  var passprompt = window.prompt("Would you like your password to include NUMERICAL characters?");
+      passprompt = passprompt.toLowerCase();
+
+      // if they mistyped 
+      if (passprompt === "" || passprompt === null) {
+        window.alert("Invalid Input.")
+        passNumOption();
+      }
+
+      // if it was YES
+      else if (passprompt === "yes") {
+        passprompt = true;
+        return passprompt;
+      }
+
+      else if (passprompt === "no") {
+        passprompt = false;
+        return passprompt
+      }
+
+      return passprompt;
+}
     
-    passCharTypesOptions = passCharTypesOptions.toLowerCase();
-    // conditional recursive function call
-    if (passCharTypesOptions === "lowercase") {
+// prompted for special characters
+var passSpecOption = function () {
+  var passprompt = window.prompt("Would you like your password to include SPECIAL characters?");
+      passprompt = passprompt.toLowerCase();
 
-      // generated password
-      window.alert("Your generated password is " + getRandomLower);
-    }
+      // if they mistyped 
+      if (passprompt === "" || passprompt === null) {
+        window.alert("Invalid Input.")
+        passSpecOption();
+      }
 
-    if (passCharTypesOptions === "uppercase") {
+      // if it was YES
+      else if (passprompt === "yes") {
+        passprompt = true;
+        return passprompt;
+      }
 
-      // upper case only
-      passCharTypesOptions = getRandomUpper;
+      else if (passprompt === "no") {
+        passprompt = false;
+        return passprompt
+      }
 
-    }
+      return passprompt;
+}
 
-    if (passCharTypesOptions === "numeric") {
-
-      // numeric only
-      passCharTypesOptions = getRandomNumber;
-
-    }
-
-    if (passCharTypesOptions === "special characters") {
-
-      // special characters only
-      passCharTypesOptions = getRandomSymbol;
-
-    }
-  }
+// prompted for special characters
 
 
 // when password is generated - password displayed in alert or written on page
 var passwordText = document.querySelector("#password");
 
 
-// Variables
-var getRandomLower = function() {
-  String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-
-};
-
-var getRandomUpper = function() {
-  return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-};
-
-var getRandomNumber = function() {
-  return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
-};
-
-var getRandomSymbol = function() {
-  const symbols = "\\ !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~";
-  return symbols[Math.floor(Math.random() * symbols.length)];
-};
+// Variables and functions
+function generatePassword() {
+  
+}
