@@ -1,5 +1,18 @@
-// Assignment code here
+// Get references to the #generate element
+var generateBtn = document.querySelector("#generate");
 
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
+
+// Write password to the #password input
+function writePassword() {
+  alert("To generate a random password, click OK to proceed.");
+
+  if (writePassword) {
+    showPassCriteria();
+  }
+};
 
 // prompt criteria
 var showPassCriteria = function() {
@@ -10,68 +23,70 @@ var showPassCriteria = function() {
   if (passLength >= 8 && passLength <= 128) {
     passCharTypes();
 
-    // return passLength;
+  return passLength;
   }
   else {
     window.alert("Invalid Input.  Your random password must have atleast a minimum of 8 characters and no more than 128 characters.");
     // force guest to choose valid option
     showPassCriteria();
   }
-}
+};
 
 // prompted for character types
 var passCharTypes = function () {
-  var 
-}
+  var passCharTypesOptions = window.prompt(
+    "Choose atleast one character type for your random password.  Type LOWERCASE, UPPERCASE, NUMERIC and/or SPECIAL CHARACTERS.");
+    
+    passCharTypesOptions = passCharTypesOptions.toLowerCase();
+    // conditional recursive function call
+    if (passCharTypesOptions === "lowercase") {
 
+      // generated password
+      window.alert("Your generated password is " + getRandomLower);
+    }
 
+    if (passCharTypesOptions === "uppercase") {
 
+      // upper case only
+      passCharTypesOptions = getRandomUpper;
 
+    }
 
-  //random number
-  function getRandomLower() {
-    return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+    if (passCharTypesOptions === "numeric") {
+
+      // numeric only
+      passCharTypesOptions = getRandomNumber;
+
+    }
+
+    if (passCharTypesOptions === "special characters") {
+
+      // special characters only
+      passCharTypesOptions = getRandomSymbol;
+
+    }
   }
 
-  // upper case
-  function getRandomUpper() {
-    return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-  }
 
-  // lower case
-  function getRandomLower() {
-    return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-  }
-
-  // special characters
-  function getRandomSymbol() {
-    const symbols = "\\ !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~";
-    return symbols[Math.floor(Math.random() * symbols.length)];
-  }
-
-// when all prompt is answer - generate
-
-// password is generated and displayed in an alert
+// when password is generated - password displayed in alert or written on page
+var passwordText = document.querySelector("#password");
 
 
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
+// Variables
+var getRandomLower = function() {
+  String.fromCharCode(Math.floor(Math.random() * 26) + 97);
 
-// Write password to the #password input
-function writePassword() {
-  alert("To generate a random password, click OK to proceed.");
+};
 
-  if (writePassword) {
-    showPassCriteria();
-  }
-}
+var getRandomUpper = function() {
+  return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+};
 
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
+var getRandomNumber = function() {
+  return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
+};
 
-// passwordText.value = password;
-
-// }
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+var getRandomSymbol = function() {
+  const symbols = "\\ !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~";
+  return symbols[Math.floor(Math.random() * symbols.length)];
+};
