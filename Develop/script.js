@@ -45,109 +45,106 @@ var showPassCriteria = function() {
 
 // prompted for lower case
 var passUpperOption = function () {
-  var passprompt = window.prompt("Would you like your password to include UPPERCASE leters?");
-      passprompt = passprompt.toLowerCase();
+  var passUpperprompt = window.prompt("Would you like your password to include UPPERCASE leters?");
+      passUpperprompt = passprompt.toLowerCase();
 
       // if they mistyped 
-      if (passprompt === "" || passprompt === null) {
+      if (passUpperprompt === "" || passUpperprompt === null) {
         window.alert("Invalid Input.")
         passUpperOption();
       }
 
       // if it was YES
-      else if (passprompt === "yes") {
-        passprompt = true;
-        return passprompt;
+      else if (passUpperprompt === "yes") {
+        passUpperprompt = true;
+        return passUpperprompt;
       }
 
-      else if (passprompt === "no") {
-        passprompt = false;
-        return passprompt
+      else if (passUpperprompt === "no") {
+        passUpperprompt = false;
+        return passUpperprompt;
       }
 
-      return passprompt;
+      return passUpperprompt;
       
 }
 
 
  // prompted for upper case
  var passLowerOption = function () {
-  var passprompt = window.prompt("Would you like your password to include LOWERCASE leters?");
-      passprompt = passprompt.toLowerCase();
+  var passLowerprompt = window.prompt("Would you like your password to include LOWERCASE leters?");
+      passLowerprompt = passprompt.toLowerCase();
 
       // if they mistyped 
-      if (passprompt === "" || passprompt === null) {
+      if (passLowerprompt === "" || passLowerprompt === null) {
         window.alert("Invalid Input.")
         passLowerOption();
       }
 
       // if it was YES
-      else if (passprompt === "yes") {
-        passprompt = true;
-        return passprompt;
+      else if (passLowerprompt === "yes") {
+        passLowerprompt = true;
+        return passLowerprompt;
       }
 
-      else if (passprompt === "no") {
-        passprompt = false;
-        return passprompt
+      else if (passLowerprompt === "no") {
+        passLowerprompt = false;
+        return passLowerprompt;
       }
 
-      return passprompt;
+      return passLowerprompt;
 }
 
 
  // prompted for numeric
  var passNumOption = function () {
-  var passprompt = window.prompt("Would you like your password to include NUMERICAL characters?");
-      passprompt = passprompt.toLowerCase();
+  var passNumprompt = window.prompt("Would you like your password to include NUMERICAL characters?");
+      passNumprompt = passprompt.toLowerCase();
 
       // if they mistyped 
-      if (passprompt === "" || passprompt === null) {
+      if (passNumprompt === "" || passNumprompt === null) {
         window.alert("Invalid Input.")
         passNumOption();
       }
 
       // if it was YES
-      else if (passprompt === "yes") {
-        passprompt = true;
-        return passprompt;
+      else if (passNumprompt === "yes") {
+        passNumprompt = true;
+        return passNumprompt;
       }
 
-      else if (passprompt === "no") {
-        passprompt = false;
-        return passprompt
+      else if (passNumprompt === "no") {
+        passNumprompt = false;
+        return passNumprompt;
       }
 
-      return passprompt;
+      return passNumprompt;
 }
     
 // prompted for special characters
 var passSpecOption = function () {
-  var passprompt = window.prompt("Would you like your password to include SPECIAL characters?");
-      passprompt = passprompt.toLowerCase();
+  var passSpecprompt = window.prompt("Would you like your password to include SPECIAL characters?");
+      passSpecprompt = passprompt.toLowerCase();
 
       // if they mistyped 
-      if (passprompt === "" || passprompt === null) {
+      if (passSpecprompt === "" || passSpecprompt === null) {
         window.alert("Invalid Input.")
         passSpecOption();
       }
 
       // if it was YES
-      else if (passprompt === "yes") {
-        passprompt = true;
-        return passprompt;
+      else if (passSpecprompt === "yes") {
+        passSpecprompt = true;
+        return passSpecprompt;
       }
 
-      else if (passprompt === "no") {
-        passprompt = false;
-        return passprompt
+      else if (passSpecprompt === "no") {
+        passSpecprompt = false;
+        return passSpecprompt;
       }
 
-      return passprompt;
+      return passSpecprompt;
 }
-
-// prompted for special characters
-
 
 // when password is generated - password displayed in alert or written on page
 var passwordText = document.querySelector("#password");
@@ -155,5 +152,26 @@ var passwordText = document.querySelector("#password");
 
 // Variables and functions
 function generatePassword() {
-  
+
+  // generate length
+  showPassCriteria();
+  console.log(passLength);
+
+  // generate upper case
+  passUpperOption();
+  console.log(passUpperprompt);
+
+  // generate lower case
+  passLowerOption();
+  console.log(passLowerprompt);
+
+  // generate numerical values
+  passNumOption();
+  console.log(passNumprompt);
+
+  // generate special characters
+  passSpecOption();
+  console.log(passSpecprompt);
 }
+
+
