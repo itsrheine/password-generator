@@ -157,11 +157,17 @@ function generatePassword() {
 }
 
 // 
+var 
+var passGen = "";
 
+// choices combined
+if (passUpperprompt && passNumprompt && passSpecprompt){
+
+}
 
 // incorporating character length chosen by user to equation to generate random password
 for (var i = 0; i < passLength; i++){
-  += 
+  passGen += 
 }
 
 // password is generated and displayed in alert or writter to the page
