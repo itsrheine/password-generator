@@ -1,16 +1,31 @@
-// variables
+// Assignment code here
+document.querySelector("#generate").addEventListener("click", writePassword);
 
+// universal variable 
+var generateBtn = document.querySelector("#generate");
+var alllowercase = "abcdefghijklmnopqrstuvwxyz";
+var alluppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var allnumbers = "0123456789";
+var allspecial = "!@#$%^&*()_-+={}[];:'`~<,>.?/|"
+var passLength;
+var passUpperprompt;
+var passLowerprompt;
+var passNumprompt;
+var passSpecprompt;
+var generatedlastPass;
+var number;
+var upper;
+var lower;
 
 // prompt criteria
 var showPassCriteria = function() {
   var passLength = window.prompt("Before proceeding, type the desired # of characters for your random password.  Your random password must have atleast a minimum of 8 characters and no more than 128 characters.");
-  console.log = (passLength);
-
+  
   // prompted for length
   if (passLength >= 8 && passLength <= 128) {
     window.alert("You may choose between four character types.  You must choose atleast one in order to proceed.")
     passUpperOption();
-
+  
   return passLength;
   }
   else {
@@ -18,118 +33,89 @@ var showPassCriteria = function() {
     // force guest to choose valid option
     showPassCriteria();
   }
-
-  var passExit = window.confirm("Exit");
   
-  if (passExit) {
-    showPassCriteria();
-  }
-  else {
-    window.alert("Exit");
-  }
-  
-};
+}
 
 // prompted for lower case
 var passUpperOption = function () {
-  var passUpperprompt = window.prompt("Would you like your password to include UPPERCASE leters?");
-      passUpperprompt = passprompt.toLowerCase();
+  var passUpperprompt = window.confirm("Would you like your password to include UPPERCASE leters?");
 
-      // if they mistyped 
-      if (passUpperprompt === "" || passUpperprompt === null) {
-        window.alert("Invalid Input.")
-        passUpperOption();
-      }
-
-      // if it was YES
-      else if (passUpperprompt === "yes") {
-        passUpperprompt = true;
-        return passUpperprompt;
-      }
-
-      else if (passUpperprompt === "no") {
-        passUpperprompt = false;
-        return passUpperprompt;
-      }
+    // if it was YES
+    if (passUpperprompt) {
+      passUpperprompt = true;
+      passLowerOption();
 
       return passUpperprompt;
-      
+    }
+
+    // if it was NO
+    else {
+      passUpperprompt = false;
+      passLowerOption();
+
+      return passUpperprompt;
+    }      
 }
 
- // prompted for upper case
- var passLowerOption = function () {
-  var passLowerprompt = window.prompt("Would you like your password to include LOWERCASE leters?");
-      passLowerprompt = passprompt.toLowerCase();
+// prompted for upper case
+var passLowerOption = function () {
+  var passLowerprompt = window.confirm("Would you like your password to include LOWERCASE leters?");
 
-      // if they mistyped 
-      if (passLowerprompt === "" || passLowerprompt === null) {
-        window.alert("Invalid Input.")
-        passLowerOption();
-      }
-
-      // if it was YES
-      else if (passLowerprompt === "yes") {
-        passLowerprompt = true;
-        return passLowerprompt;
-      }
-
-      else if (passLowerprompt === "no") {
-        passLowerprompt = false;
-        return passLowerprompt;
-      }
+    // if it was YES
+    if (passLowerprompt) {
+      passLowerprompt = true;
+      passNumOption();
 
       return passLowerprompt;
+    }
+
+    // if it was NO
+    else {
+      passLowerprompt = false;
+      passNumOption();
+
+      return passLowerprompt;
+    }      
 }
 
+// prompted for numeric
+var passNumOption = function () {
+  var passNumprompt = window.confirm("Would you like your password to include NUMBERS?");
 
- // prompted for numeric
- var passNumOption = function () {
-  var passNumprompt = window.prompt("Would you like your password to include NUMERICAL characters?");
-      passNumprompt = passprompt.toLowerCase();
-
-      // if they mistyped 
-      if (passNumprompt === "" || passNumprompt === null) {
-        window.alert("Invalid Input.")
-        passNumOption();
-      }
-
-      // if it was YES
-      else if (passNumprompt === "yes") {
-        passNumprompt = true;
-        return passNumprompt;
-      }
-
-      else if (passNumprompt === "no") {
-        passNumprompt = false;
-        return passNumprompt;
-      }
+    // if it was YES
+    if (passNumprompt) {
+      passNumprompt = true;
+      passSpecOption();
 
       return passNumprompt;
+    }
+
+    // if it was NO
+    else {
+      passNumprompt = false;
+      passSpecOption();
+
+      return passNumprompt;
+    }      
 }
-    
+
 // prompted for special characters
 var passSpecOption = function () {
-  var passSpecprompt = window.prompt("Would you like your password to include SPECIAL characters?");
-      passSpecprompt = passprompt.toLowerCase();
+  var passSpecprompt = window.confirm("Would you like your password to include SPECIAL characters?");
 
-      // if they mistyped 
-      if (passSpecprompt === "" || passSpecprompt === null) {
-        window.alert("Invalid Input.")
-        passSpecOption();
-      }
-
-      // if it was YES
-      else if (passSpecprompt === "yes") {
-        passSpecprompt = true;
-        return passSpecprompt;
-      }
-
-      else if (passSpecprompt === "no") {
-        passSpecprompt = false;
-        return passSpecprompt;
-      }
+    // if it was YES
+    if (passSpecprompt) {
+      passSpecprompt = true;
 
       return passSpecprompt;
+    }
+
+    // if it was NO
+    else {
+      passSpecprompt = false;
+
+      return passSpecprompt;
+    }      
 }
 
 // functions
@@ -154,38 +140,82 @@ function generatePassword() {
   // generate special characters
   passSpecOption();
   console.log(passSpecprompt);
-}
-
-// 
-var 
-var passGen = "";
+};
 
 // choices combined
-if (passUpperprompt && passNumprompt && passSpecprompt){
+var charcombined = "";
+var generatedlastPass = ""; 
 
+  if (passUpperprompt && passNumprompt && passSpecprompt && passLowerprompt){
+    charcombined += alluppercase + allnumbers + allspecial + alllowercase;
+
+  }
+
+  else if (passUpperprompt && passNumprompt && passLowerprompt){
+    charcombined += alluppercase + allnumbers + alllowercase;
+
+  }
+
+  else if (passLowerprompt && passSpecprompt){
+    charcombined += allnumbers + allspecial;
+
+  }
+
+  else if (passNumprompt && passSpecprompt){
+    charcombined += allnumbers + allspecial;
+
+  }
+
+  else if (passUpperprompt && passNumprompt){
+    charcombined += alluppercase + allnumbers;
+   
+  }
+
+  else if (passUpperprompt && passSpecprompt){
+    charcombined += alluppercase + allspecial;
+   
+  }
+
+  else if (passUpperprompt && passLowerprompt){
+    charcombined += alluppercase + alllowercase;
+   
+  }
+
+  else if (passUpperprompt){
+    charcombined += alluppercase;
+
+  }
+
+  else if (passLowerprompt){
+    charcombined += alllowercase;
+
+  }
+
+  else if (passNumprompt){
+    charcombined += allnumbers;
+
+  }
+
+  else if (passSpecprompt){
+    charcombined += allspecial;
+
+  }
+
+
+
+  
+  for (var i = 0; i < passLength; i++){
+  generatedlastPass += charcombined.charAt(Math.floor(Math.random() * charcombined.length));
 }
 
-// incorporating character length chosen by user to equation to generate random password
-for (var i = 0; i < passLength; i++){
-  passGen += 
-}
 
-// password is generated and displayed in alert or writter to the page
+// Writes password to the #password input
 function writePassword() {
-  window.alert("To generate a random password, click OK to proceed.");
-  var passGen = "";
-  passGen = generatePassword();
+  generatedlastPass = generatePassword();
+  var passwordText = document.querySelector("#password");
+  passwordText.value = generatedlastPass;
+}
 
-  // when password is generated - password displayed in alert or written on page
-  var passwordText = document.querySelector("#password"); {
-  passwordText.value = passGen;
-
-}  
-
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-
