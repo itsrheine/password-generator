@@ -1,18 +1,5 @@
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
+// variables
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
-
-// Write password to the #password input
-function writePassword() {
-  alert("To generate a random password, click OK to proceed.");
-
-  if (writePassword) {
-    showPassCriteria();
-  }
-};
 
 // prompt criteria
 var showPassCriteria = function() {
@@ -68,7 +55,6 @@ var passUpperOption = function () {
       return passUpperprompt;
       
 }
-
 
  // prompted for upper case
  var passLowerOption = function () {
@@ -146,11 +132,7 @@ var passSpecOption = function () {
       return passSpecprompt;
 }
 
-// when password is generated - password displayed in alert or written on page
-var passwordText = document.querySelector("#password");
-
-
-// Variables and functions
+// functions
 function generatePassword() {
 
   // generate length
@@ -173,5 +155,31 @@ function generatePassword() {
   passSpecOption();
   console.log(passSpecprompt);
 }
+
+// 
+
+
+// incorporating character length chosen by user to equation to generate random password
+for (var i = 0; i < passLength; i++){
+  += 
+}
+
+// password is generated and displayed in alert or writter to the page
+function writePassword() {
+  window.alert("To generate a random password, click OK to proceed.");
+  var passGen = "";
+  passGen = generatePassword();
+
+  // when password is generated - password displayed in alert or written on page
+  var passwordText = document.querySelector("#password"); {
+  passwordText.value = passGen;
+
+}  
+
+// Get references to the #generate element
+var generateBtn = document.querySelector("#generate");
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 
 
