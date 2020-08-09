@@ -1,18 +1,15 @@
-// Assignment code here
-document.querySelector("#generate").addEventListener("click", writePassword);
-
 // universal variable 
 var generateBtn = document.querySelector("#generate");
 var alllowercase = "abcdefghijklmnopqrstuvwxyz";
 var alluppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var allnumbers = "0123456789";
 var allspecial = "!@#$%^&*()_-+={}[];:'`~<,>.?/|"
-var passLength;
-var passUpperprompt;
-var passLowerprompt;
-var passNumprompt;
-var passSpecprompt;
-var generatedlastPass;
+var passLength = 0;
+var passUpperprompt = false;
+var passLowerprompt = false;
+var passNumprompt = false;
+var passSpecprompt = false;
+var generatedlastPass = "";
 var number;
 var upper;
 var lower;
@@ -38,13 +35,12 @@ var showPassCriteria = function() {
 
 // prompted for lower case
 var passUpperOption = function () {
-  var passUpperprompt = window.confirm("Would you like your password to include UPPERCASE leters?");
-
+  passUpperprompt = window.confirm("Would you like your password to include UPPERCASE leters?");
+    console.log(passUpperprompt)  
+    
     // if it was YES
     if (passUpperprompt) {
-      passUpperprompt = true;
       passLowerOption();
-
       return passUpperprompt;
     }
 
@@ -52,20 +48,18 @@ var passUpperOption = function () {
     else {
       passUpperprompt = false;
       passLowerOption();
-
       return passUpperprompt;
     }      
 }
 
 // prompted for upper case
 var passLowerOption = function () {
-  var passLowerprompt = window.confirm("Would you like your password to include LOWERCASE leters?");
-
+  passLowerprompt = window.confirm("Would you like your password to include LOWERCASE leters?");
+    console.log(passLowerprompt)
+    
     // if it was YES
     if (passLowerprompt) {
-      passLowerprompt = true;
       passNumOption();
-
       return passLowerprompt;
     }
 
@@ -73,18 +67,16 @@ var passLowerOption = function () {
     else {
       passLowerprompt = false;
       passNumOption();
-
       return passLowerprompt;
     }      
 }
 
 // prompted for numeric
 var passNumOption = function () {
-  var passNumprompt = window.confirm("Would you like your password to include NUMBERS?");
-
+  passNumprompt = window.confirm("Would you like your password to include NUMBERS?");
+    console.log(passNumprompt)
     // if it was YES
     if (passNumprompt) {
-      passNumprompt = true;
       passSpecOption();
 
       return passNumprompt;
@@ -101,12 +93,11 @@ var passNumOption = function () {
 
 // prompted for special characters
 var passSpecOption = function () {
-  var passSpecprompt = window.confirm("Would you like your password to include SPECIAL characters?");
+  passSpecprompt = window.confirm("Would you like your password to include SPECIAL characters?");
+  console.log(passSpecprompt)
 
     // if it was YES
     if (passSpecprompt) {
-      passSpecprompt = true;
-
       return passSpecprompt;
     }
 
@@ -118,6 +109,7 @@ var passSpecOption = function () {
     }      
 }
 
+
 // functions
 function generatePassword() {
 
@@ -126,88 +118,66 @@ function generatePassword() {
   console.log(passLength);
 
   // generate upper case
-  passUpperOption();
+  //passUpperOption();
   console.log(passUpperprompt);
 
   // generate lower case
-  passLowerOption();
+  //passLowerOption();
   console.log(passLowerprompt);
 
   // generate numerical values
-  passNumOption();
+ // passNumOption();
   console.log(passNumprompt);
 
   // generate special characters
-  passSpecOption();
+ // passSpecOption();
   console.log(passSpecprompt);
-};
 
-// choices combined
-var charcombined = "";
-var generatedlastPass = ""; 
+  var generatedlastPass= "";
+  var charcombined = "";
 
   if (passUpperprompt && passNumprompt && passSpecprompt && passLowerprompt){
     charcombined += alluppercase + allnumbers + allspecial + alllowercase;
 
-  }
-
-  else if (passUpperprompt && passNumprompt && passLowerprompt){
+  } else if (passUpperprompt && passNumprompt && passLowerprompt){
     charcombined += alluppercase + allnumbers + alllowercase;
 
-  }
-
-  else if (passLowerprompt && passSpecprompt){
+  } else if (passLowerprompt && passSpecprompt){
     charcombined += allnumbers + allspecial;
 
-  }
-
-  else if (passNumprompt && passSpecprompt){
+  } else if (passNumprompt && passSpecprompt){
     charcombined += allnumbers + allspecial;
 
-  }
-
-  else if (passUpperprompt && passNumprompt){
+  } else if (passUpperprompt && passNumprompt){
     charcombined += alluppercase + allnumbers;
    
-  }
-
-  else if (passUpperprompt && passSpecprompt){
+  } else if (passUpperprompt && passSpecprompt){
     charcombined += alluppercase + allspecial;
    
-  }
-
-  else if (passUpperprompt && passLowerprompt){
+  } else if (passUpperprompt && passLowerprompt){
     charcombined += alluppercase + alllowercase;
    
-  }
-
-  else if (passUpperprompt){
+  } else if (passUpperprompt){
     charcombined += alluppercase;
 
-  }
-
-  else if (passLowerprompt){
+  } else if (passLowerprompt){
     charcombined += alllowercase;
 
-  }
-
-  else if (passNumprompt){
+  } else if (passNumprompt){
     charcombined += allnumbers;
 
-  }
-
-  else if (passSpecprompt){
+  } else if (passSpecprompt){
     charcombined += allspecial;
 
   }
-
-
-
   
   for (var i = 0; i < passLength; i++){
   generatedlastPass += charcombined.charAt(Math.floor(Math.random() * charcombined.length));
-}
+  }
 
+  return generatedlastPass;
+
+};
 
 // Writes password to the #password input
 function writePassword() {
@@ -215,7 +185,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
   passwordText.value = generatedlastPass;
 }
-
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
