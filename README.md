@@ -10,5 +10,5 @@ Enjoy.
 https://itsrheine.github.io/password-generator/
 
 ## Screenshot
-Develop\assets\passGen.png
+![Screenshot](Develop/assets/passGen.png)
 
