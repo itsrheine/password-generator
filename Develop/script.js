@@ -4,7 +4,7 @@ var alllowercase = "abcdefghijklmnopqrstuvwxyz";
 var alluppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var allnumbers = "0123456789";
 var allspecial = "!@#$%^&*()_-+={}[];:'`~<,>.?/|"
-var passLength = 0;
+var passLength;
 var passUpperprompt = false;
 var passLowerprompt = false;
 var passNumprompt = false;
@@ -16,7 +16,7 @@ var lower;
 
 // prompt criteria
 var showPassCriteria = function() {
-  var passLength = window.prompt("Before proceeding, type the desired # of characters for your random password.  Your random password must have atleast a minimum of 8 characters and no more than 128 characters.");
+  passLength = window.prompt("Before proceeding, type the desired # of characters for your random password.  Your random password must have atleast a minimum of 8 characters and no more than 128 characters.");
   
   // prompted for length
   if (passLength >= 8 && passLength <= 128) {
@@ -170,11 +170,15 @@ function generatePassword() {
     charcombined += allspecial;
 
   }
-  
+  console.log(charcombined);
+  console.log("passLength : ",passLength);
   for (var i = 0; i < passLength; i++){
-  generatedlastPass += charcombined.charAt(Math.floor(Math.random() * charcombined.length));
+    var randomVal = Math.floor(Math.random() * charcombined.length);
+    console.log("randomVal : ", randomVal);
+    console.log("charcombined.charAt(randomVal) :: ", charcombined.charAt(randomVal));
+  generatedlastPass += charcombined.charAt(randomVal);
   }
-
+  console.log(generatedlastPass);
   return generatedlastPass;
 
 };
